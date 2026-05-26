@@ -34,6 +34,7 @@ export default function Navbar() {
             {[
               { href: "/", label: "Home" },
               { href: "/tasks", label: "Tasks" },
+              { href: "/stats", label: "Stats" },
               { href: "/#about", label: "About" },
             ].map((link: { href: string; label: string }) => (
               <Link
