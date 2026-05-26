@@ -1,36 +1,27 @@
 import type { Task } from "@/types/task";
 
-type StatsCardsProps = {
-  tasks: Task[];
-};
+type StatsCardsProps = { tasks: Task[] };
 
 export default function StatsCards({ tasks }: StatsCardsProps) {
-  const totalTasks = tasks.length;
-  const pendingTasks = tasks.filter((task) => task.status === "pending").length;
-  const inProgressTasks = tasks.filter(
-    (task) => task.status === "in-progress",
-  ).length;
-  const doneTasks = tasks.filter((task) => task.status === "done").length;
-
   const stats = [
     {
       title: "Total Tasks",
-      value: totalTasks,
+      value: tasks.length,
       description: "All created tasks",
     },
     {
       title: "Pending",
-      value: pendingTasks,
+      value: tasks.filter((t) => t.status === "pending").length,
       description: "Not started yet",
     },
     {
       title: "In Progress",
-      value: inProgressTasks,
+      value: tasks.filter((t) => t.status === "in-progress").length,
       description: "Currently working",
     },
     {
       title: "Done",
-      value: doneTasks,
+      value: tasks.filter((t) => t.status === "done").length,
       description: "Completed tasks",
     },
   ];
@@ -40,11 +31,22 @@ export default function StatsCards({ tasks }: StatsCardsProps) {
       {stats.map((stat) => (
         <div
           key={stat.title}
-          className="rounded-2xl border border-slate-800 bg-slate-900/70 p-5 shadow-lg shadow-slate-950/30"
+          className={[
+            "rounded-2xl border p-5 shadow-lg transition-colors duration-300",
+            "bg-white dark:bg-slate-900/70",
+            "border-slate-200 dark:border-slate-800",
+            "shadow-slate-200/30 dark:shadow-slate-950/30",
+          ].join(" ")}
         >
-          <p className="text-sm text-slate-400">{stat.title}</p>
-          <h3 className="mt-2 text-3xl font-bold text-white">{stat.value}</h3>
-          <p className="mt-1 text-sm text-slate-500">{stat.description}</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            {stat.title}
+          </p>
+          <h3 className="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+            {stat.value}
+          </h3>
+          <p className="mt-1 text-sm text-slate-400 dark:text-slate-500">
+            {stat.description}
+          </p>
         </div>
       ))}
     </section>

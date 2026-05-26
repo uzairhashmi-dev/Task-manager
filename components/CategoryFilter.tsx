@@ -1,27 +1,28 @@
-import type { TaskFilter as TaskFilterType } from "@/types/task";
+import type { TaskCategoryFilter } from "@/types/task";
 
-type TaskFilterProps = {
-  activeFilter: TaskFilterType;
-  onFilterChange: (filter: TaskFilterType) => void;
+type CategoryFilterProps = {
+  activeCategory: TaskCategoryFilter;
+  onCategoryChange: (category: TaskCategoryFilter) => void;
 };
 
-const filters: { label: string; value: TaskFilterType }[] = [
+const categories: { label: string; value: TaskCategoryFilter }[] = [
   { label: "All", value: "all" },
-  { label: "Pending", value: "pending" },
-  { label: "In Progress", value: "in-progress" },
-  { label: "Done", value: "done" },
+  { label: "Work", value: "work" },
+  { label: "Personal", value: "personal" },
+  { label: "Study", value: "study" },
+  { label: "Other", value: "other" },
 ];
 
-export default function TaskFilter({ activeFilter, onFilterChange }: TaskFilterProps) {
+export default function CategoryFilter({ activeCategory, onCategoryChange }: CategoryFilterProps) {
   return (
     <div className="flex flex-wrap gap-2">
-      {filters.map((filter) => {
-        const isActive = activeFilter === filter.value;
+      {categories.map((cat) => {
+        const isActive = activeCategory === cat.value;
         return (
           <button
-            key={filter.value}
+            key={cat.value}
             type="button"
-            onClick={() => onFilterChange(filter.value)}
+            onClick={() => onCategoryChange(cat.value)}
             className={[
               "rounded-full px-4 py-2 text-sm font-medium transition",
               isActive
@@ -34,7 +35,7 @@ export default function TaskFilter({ activeFilter, onFilterChange }: TaskFilterP
                   ].join(" "),
             ].join(" ")}
           >
-            {filter.label}
+            {cat.label}
           </button>
         );
       })}

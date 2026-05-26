@@ -1,10 +1,20 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;   /* slate-50 — light bg */
+  --foreground: #0f172a;   /* slate-900 — light text */
 }
 
+.dark {
+  --background: #020617;   /* slate-950 — dark bg */
+  --foreground: #f1f5f9;   /* slate-100 — dark text */
+}
+
+/* ─── THEME TOKENS ────────────────────────────────────
+   @theme inline — Tailwind ko custom tokens deta hai
+──────────────────────────────────────────────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,15 +22,11 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ─── BASE STYLES ─────────────────────────────────────*/
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* ↑ smooth transition jab theme toggle ho */
 }
