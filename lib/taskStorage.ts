@@ -39,3 +39,10 @@ export function updateTaskInStorage(updatedTask: Task): void {
   );
   saveTasksToStorage(newTasks);
 }
+
+// Category se tasks filter karo
+export function getTasksByCategory(category: TaskCategory): Task[] {
+  const tasks = getTasksFromStorage();
+  return tasks.filter((task) => task.category === category);
+  // filter → sirf us category ke tasks return karo
+}

@@ -10,7 +10,7 @@ export default function HomePage() {
         "text-slate-900 dark:text-white",
       ].join(" ")}
     >
-      {/* ── HERO SECTION ─────────────────────────── */}
+      {/* ── HERO SECTION */}
       <section className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:items-center">
         
         {/* LEFT — Text */}
@@ -23,7 +23,7 @@ export default function HomePage() {
               "border border-cyan-200 dark:border-cyan-400/20",
             ].join(" ")}
           >
-            ✦ Next.js + TypeScript Practice Project
+            ✦ Next.js + TypeScript Task Manager Project
           </span>
 
           <h1
@@ -41,7 +41,7 @@ export default function HomePage() {
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-500 dark:text-slate-400">
             A full-featured task manager built with Next.js, TypeScript, and
             Tailwind CSS. Create tasks, track progress, filter by category,
-            and visualize your productivity.
+            and visualize your productivity,and complet dynamic routing.
           </p>
 
           {/* CTA BUTTONS */}

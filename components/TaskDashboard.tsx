@@ -11,13 +11,14 @@ import type {
   Task,
   TaskFilter as TaskFilterType,
   TaskStatus,
-  TaskCategoryFilter, 
+  TaskCategoryFilter,
 } from "@/types/task";
 
 export default function TaskDashboard() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [activeFilter, setActiveFilter] = useState<TaskFilterType>("all");
-  const [activeCategory, setActiveCategory] = useState<TaskCategoryFilter>("all"); // ← NEW
+  const [activeCategory, setActiveCategory] =
+    useState<TaskCategoryFilter>("all"); // ← NEW
   const [hasLoaded, setHasLoaded] = useState(false);
 
   useEffect(() => {
@@ -41,9 +42,7 @@ export default function TaskDashboard() {
   }
 
   function handleStatusChange(id: string, status: TaskStatus) {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, status } : t))
-    );
+    setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, status } : t)));
   }
 
   // DONO filters — status AND category
@@ -63,21 +62,21 @@ export default function TaskDashboard() {
         {/* Header */}
         <section className="mb-8">
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-600 dark:text-cyan-300">
-            Next.js + TypeScript Practice
+            Next.js + TypeScript
           </p>
           <div className="mt-4 max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl">
               Task Manager Dashboard
             </h1>
             <p className="mt-4 text-base leading-7 text-slate-500 dark:text-slate-400 sm:text-lg">
-              Create, filter, update, and delete tasks.
+              Create, filter, update,view, edit and delete tasks.
             </p>
           </div>
         </section>
 
         <StatsCards tasks={tasks} />
 
-        <section className="mt-8 grid gap-6 lg:grid-cols-[380px_1fr]">
+        <section className="mt-8 grid gap-6 items-start lg:grid-cols-[380px_1fr]">
           <TaskForm onAddTask={handleAddTask} />
 
           <div
@@ -114,11 +113,13 @@ export default function TaskDashboard() {
               />
             </div>
 
-            <TaskList
-              tasks={filteredTasks}
-              onDeleteTask={handleDeleteTask}
-              onStatusChange={handleStatusChange}
-            />
+            <div className="max-h-[350px] overflow-y-auto">
+              <TaskList
+                tasks={filteredTasks}
+                onDeleteTask={handleDeleteTask}
+                onStatusChange={handleStatusChange}
+              />
+            </div>
           </div>
         </section>
       </div>

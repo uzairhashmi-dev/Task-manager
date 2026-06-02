@@ -7,7 +7,11 @@ type TaskListProps = {
   onStatusChange: (id: string, status: TaskStatus) => void;
 };
 
-export default function TaskList({ tasks, onDeleteTask, onStatusChange }: TaskListProps) {
+export default function TaskList({
+  tasks,
+  onDeleteTask,
+  onStatusChange,
+}: TaskListProps) {
   if (tasks.length === 0) {
     return (
       <div
