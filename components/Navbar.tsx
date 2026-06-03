@@ -6,7 +6,6 @@ import { Sun, Moon, Menu, X, ChevronDown } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import type { TaskCategory } from "@/types/task";
 
-// Categories list — ek jagah define karo
 const CATEGORIES: { label: string; value: TaskCategory }[] = [
   { label: "Work", value: "work" },
   { label: "Personal", value: "personal" },
@@ -36,7 +35,7 @@ export default function Navbar() {
         "bg-white/90 dark:bg-slate-950/90",
       ].join(" ")}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex w-full items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
 
         <Link
           href="/"
