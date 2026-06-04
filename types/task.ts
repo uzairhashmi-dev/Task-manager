@@ -10,7 +10,7 @@ export type Task = {
   description: string;
   priority: TaskPriority;
   status: TaskStatus;
-  category: TaskCategory; // ← NEW FIELD
+  category: TaskCategory; 
   createdAt: string;
 };
 

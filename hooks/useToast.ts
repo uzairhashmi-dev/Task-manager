@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-
 export type ToastType = "delete" | "restore" | "error";
 
 export type Toast = {

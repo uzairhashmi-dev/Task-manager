@@ -46,7 +46,6 @@ export default function Navbar() {
         </Link>
 
         <div className="flex items-center gap-2">
-
           {/* ── DESKTOP LINKS */}
           <div className="hidden sm:flex items-center gap-1 text-sm font-medium">
 
@@ -66,7 +65,6 @@ export default function Navbar() {
             ))}
 
             {/* ── CATEGORIES DROPDOWN — DESKTOP ── */}
-            {/* group → hover pe child visible hoga */}
             <div className="relative group">
               <button
                 type="button"
@@ -96,7 +94,7 @@ export default function Navbar() {
                   "opacity-0 invisible",
                   "group-hover:opacity-100 group-hover:visible",
                   "transition-all duration-200",
-                  // Colors
+                  
                   "bg-white dark:bg-slate-900",
                   "border-slate-200 dark:border-slate-800",
                   "shadow-lg shadow-slate-200/50 dark:shadow-slate-950/50",
@@ -135,7 +133,7 @@ export default function Navbar() {
 
           </div>
 
-          {/* ── THEME TOGGLE ───────────────────── */}
+          {/* ── THEME TOGGLE */}
           <button
             type="button"
             onClick={toggleTheme}

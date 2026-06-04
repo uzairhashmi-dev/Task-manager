@@ -15,7 +15,6 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 // Ye sirf PEHLI BAAR chalta hai — effect ki zarurat nahi
-// Directly localStorage read karta hai — no setState in effect
 function getStoredTheme(): Theme {
   if (typeof window === "undefined") return "dark"; // server check
   return (localStorage.getItem("taskflow-theme") as Theme) ?? "dark";
@@ -35,7 +34,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("dark");
     }
-  }, [theme]); // sirf theme change hone pe chale
+  }, [theme]); 
 
   function toggleTheme() {
     const next: Theme = theme === "dark" ? "light" : "dark";

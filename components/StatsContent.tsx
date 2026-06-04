@@ -53,37 +53,37 @@ function StatCard({
 }
 
 export default function StatsContent() {
-  // ✅ LAZY INITIALIZER — no useEffect, no error
+  //  LAZY INITIALIZER — no useEffect, no error
   const [tasks] = useState<Task[]>(getTasksFromStorage);
 
   const total = tasks.length;
 
   // baaki sab code same rahega...
 
-  // ── STATUS COUNTS ─────────────────────────────
+  // ── STATUS COUNTS ────
   const pending = tasks.filter((t) => t.status === "pending").length;
   const inProgress = tasks.filter((t) => t.status === "in-progress").length;
   const done = tasks.filter((t) => t.status === "done").length;
   const completionRate = total === 0 ? 0 : Math.round((done / total) * 100);
 
-  // ── PRIORITY COUNTS ───────────────────────────
+  // ── PRIORITY COUNTS ──
   const high = tasks.filter((t) => t.priority === "high").length;
   const medium = tasks.filter((t) => t.priority === "medium").length;
   const low = tasks.filter((t) => t.priority === "low").length;
 
-  // ── CATEGORY COUNTS ───────────────────────────
+  // ── CATEGORY COUNTS ──
   const work = tasks.filter((t) => t.category === "work").length;
   const personal = tasks.filter((t) => t.category === "personal").length;
   const study = tasks.filter((t) => t.category === "study").length;
   const other = tasks.filter((t) => t.category === "other").length;
 
-  // ── MOST USED CATEGORY ────────────────────────
+  // ── MOST USED CATEGORY
   const categoryCounts = { work, personal, study, other };
   const topCategory = Object.entries(categoryCounts).sort(
     (a, b) => b[1] - a[1]
   )[0];
 
-  // ── NO TASKS STATE ────────────────────────────
+  // ── NO TASKS STATE 
   if (total === 0) {
     return (
       <div
@@ -106,7 +106,6 @@ export default function StatsContent() {
   return (
     <div className="space-y-6">
 
-      {/* ── TOP SUMMARY CARDS ─────────────────── */}
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {[
           {
@@ -274,7 +273,7 @@ export default function StatsContent() {
         </StatCard>
       </div>
 
-      {/* ── INSIGHT CARD ──────────────────────── */}
+      {/* ── INSIGHT CARD */}
       <div
         className={[
           "rounded-2xl border p-5 transition-colors duration-300",
